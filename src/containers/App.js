@@ -1,32 +1,34 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
 import CardList from "../components/CardList";
 import SearchBox from "../components/SearchBox";
 import "./App.css";
 import Scroll from "../components/Scroll";
 
-const App = () => {
-  const [robots, setRobots] = useState([]);
-  const [searchField, setSearchField] = useState("");
+import { setSearchField, requestRobots } from "../actions";
+import Header from "../components/Header";
 
+const App = ({
+  searchField,
+  onSearchChange,
+  robots,
+  isPending,
+  onRequestRobots,
+}) => {
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((response) => response.json())
-      .then((users) => setRobots(users));
+    onRequestRobots();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const onSearchChange = (event) => {
-    setSearchField(event.target.value);
-  };
 
   const filteredRobots = robots.filter((robot) => {
     return robot.name.toLowerCase().includes(searchField.toLowerCase());
   });
 
-  return !robots.length ? (
+  return isPending ? (
     <h1 className="tc">Loading ...</h1>
   ) : (
     <div className="tc">
-      <h1 className="f2">RoboFriends</h1>
+      <Header />
       <SearchBox searchChange={onSearchChange} />
       <Scroll>
         <CardList robots={filteredRobots} />
@@ -35,4 +37,16 @@ const App = () => {
   );
 };
 
-export default App;
+const mapStateToProps = (state) => ({
+  searchField: state.searchRobots.searchField,
+  robots: state.requestRobots.robots,
+  isPending: state.requestRobots.isPending,
+  error: state.requestRobots.error,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onSearchChange: (event) => dispatch(setSearchField(event.target.value)),
+  onRequestRobots: () => dispatch(requestRobots()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
