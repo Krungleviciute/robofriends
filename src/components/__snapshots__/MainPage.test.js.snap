@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render main page without crashing 1`] = `
+<div
+  className="tc"
+>
+  <div>
+    <h1
+      className="f2"
+    >
+      RoboFriends
+    </h1>
+  </div>
+  <div>
+    <input
+      className="pa3 ba br3 bg-washed-green"
+      placeholder="Search Robots"
+      type="search"
+    />
+  </div>
+  <div
+    className="scroller"
+    style={
+      Object {
+        "height": "800px",
+        "overflowY": "scroll",
+      }
+    }
+  >
+    <div />
+  </div>
+</div>
+`;

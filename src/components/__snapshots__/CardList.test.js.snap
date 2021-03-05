@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardList Component Tests should check if Card List component renders 1`] = `
+<div>
+  <div
+    className="tc bg-green dib br3 pa3 ma2 grow bw2 shadow-5"
+  >
+    <img
+      alt="robo profile"
+      src="https://robohash.org/1?size=200x200"
+    />
+    <div>
+      <h2>
+        Dalia Henry
+      </h2>
+      <p>
+        dalia@henry.com
+      </p>
+    </div>
+  </div>
+</div>
+`;

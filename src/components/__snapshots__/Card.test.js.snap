@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card component should check if Card component renders 1`] = `
+<div
+  className="tc bg-green dib br3 pa3 ma2 grow bw2 shadow-5"
+>
+  <img
+    alt="robo profile"
+    src="https://robohash.org/undefined?size=200x200"
+  />
+  <div>
+    <h2 />
+    <p />
+  </div>
+</div>
+`;
